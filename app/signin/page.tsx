@@ -1,14 +1,21 @@
+"use client"
 import Link from "next/link";
 
-import { Metadata } from "next";
+import { useState } from "react";
 
-export const metadata: Metadata = {
+interface SigninPageProps {
   title: "Sign In Page | Free Next.js Template for Startup and SaaS",
   description: "This is Sign In Page for Startup Nextjs Template",
-  // other metadata
 };
 
-const SigninPage = () => {
+const SigninPage: React.FC<SigninPageProps> = () => {
+
+  const [googleSignInClicked, setGoogleSignInClicked] = useState(false);
+
+  const handleGoogleSignIn = () => {
+    console.log("Google Sign-In Clicked!");
+    setGoogleSignInClicked(true);
+  };
 
   return (
     <>
@@ -26,7 +33,9 @@ const SigninPage = () => {
                 <button
                   type="button"
                   className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
-                  aria-label="Sign in with Google">
+                  aria-label="Sign in with Google"
+                  onClick={handleGoogleSignIn}
+                  disabled={googleSignInClicked}>
                   <span className="mr-3">
                     <svg
                       width="20"
@@ -61,7 +70,7 @@ const SigninPage = () => {
                       </defs>
                     </svg>
                   </span>
-                  Sign in with Google
+                  {googleSignInClicked ? "Signing in..." : "Sign in with Google"}
                 </button>
 
                 <button
