@@ -3,12 +3,7 @@ import GoogleSignIn from "@/components/GoogleSignin";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Link from "next/link";
 
-interface SigninPageProps {
-  title: "Sign In Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign In Page for Startup Nextjs Template",
-};
-
-const SigninPage: React.FC<SigninPageProps> = () => {
+const SigninPage = () => {
   const clientID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
   return (
